@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+
+    <style>
+    section{
+        display: inline-block;
+        position: absolute;
+        width: 1500px;
+
+    }
+    div{
+        width: 97vw;
+        height: 100%;
+        position: relative;
+    }
+
+
+    #StayMAn{
+        display: inline-block;
+            position: absolute;
+        height: 190px;
+        width: 160px;
+        left: 50px;
+        top: 60vh;
+        margin: auto;
+        }
+    #RunMan{
+        display: inline-block;
+        position: absolute;
+        height: 190px;
+        width: 160px;
+        left: 50px;
+        top: 60vh;
+        margin: auto;
+    }
+    #JumpMan{
+        display: inline-block;
+        position: absolute;
+        height: 190px;
+        width: 160px;
+        left: 50px;
+        top: 60vh;
+        margin: auto;
+    }
+
+    #StartGame{
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+        position: absolute;
+
+    }
+    #BackGroundDiv{
+        width: 3000px;
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+
+        animation-name: my-amation;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        /*animation-direction: reverse;*/
+        animation-timing-function: linear;
+        /*animation-delay: 4s;*/
+
+    }
+    #BackGroundpc{
+        width: 1500px;
+        height: 730px;
+        position: absolute;
+        display: inline-block;
+        left: 0;
+        top: 0;
+    }
+    #BackGroundpc2{
+        width: 1500px;
+        height: 730px;
+        position: absolute;
+        display: inline-block;
+        left: 97vw;
+        top: 0;
+
+    }
+    #BackGroundpc4{
+        width: 1500px;
+        height: 730px;
+        position: absolute;
+        display: inline-block;
+        left: 194vw;
+        top: 0;
+
+    }
+    #BackGroundpc5{
+        width: 1500px;
+        height: 730px;
+        position: absolute;
+        display: inline-block;
+        left: 290vw;
+        top: 0;
+
+    }
+    #BackGroundpcsart{
+        width: 1500px;
+        height: 730px;
+        position: absolute;
+        display: inline-block;
+        left: 0;
+        top: 0;
+    }
+    @keyframes my-amation {
+        100%{
+            /*background-repeat: repeat-x;*/
+            /*background-repeat: round;*/
+            /*background-repeat: unset;*/
+            /*transform: translateX(-1480px);*/
+            transform: translateX(-4400px);
+
+        }
+    }
+        #aside{
+            width: 100px;
+            height: 100px;
+            background: #0a53be;
+
+        }
+    </style>
+
+</head>
+<body>
+<section>
+<!--    <div>-->
+<!--        <img id="BackGroundpcsart" src="Asssets/Photo/BackGround(1).jpg">-->
+
+<!--    </div>-->
+    <div style="display: none" id="BackGroundDiv">
+        <img id="BackGroundpc" src="Asssets/Photo/BackGround(1).jpg">
+        <img id="BackGroundpc2" src="Asssets/Photo/BackGround(2).jpg">
+        <img id="BackGroundpc4" src="Asssets/Photo/BackGround(1).jpg">
+        <img id="BackGroundpc5" src="Asssets/Photo/BackGround(2).jpg">
+<!--        <img id="BackGroundpc6" src="Asssets/Photo/BackGround(1).jpg">-->
+
+    </div>
+
+        <aside id="aside" style="display: none">
+
+        </aside>
+    <div id="Div"  onload="idleAnimation()">
+        <img id="StayMAn" src="Asssets/Photo/Idle(0).png ">
+        <img style="display: none" id="RunMan" src="Asssets/Photo/Run__000.png">
+   <!--     <img id="JumpMan" src="Asssets/Photo/Jump__000.png">
+-->
+        <button id="StartGame">Start</button>
+
+    </div>
+
+</section>
+</body>
+<script src="Asssets/Framework/js/bootstrap.min.js"></script>
+<script src="Asssets/Framework/js/bootstrap.min.js"></script>
+<script src="Asssets/Framework/js/jquery-3.6.1.min.js"></script>
+
+<script>
+
+<!--StayMAn-->
+
+    var Staymans =  document.getElementById("StayMAn");
+    var StayamanNumber=0;
+
+    setInterval(idleAnimation,100);
+
+function idleAnimation(){
+        StayamanNumber = StayamanNumber+1;
+
+        Staymans.src = "Asssets/Photo/Idle("+StayamanNumber+").png"
+        if(StayamanNumber == 9){
+            StayamanNumber = 0
+        }
+    }
+
+
+        //RunMan
+        var RunMans = document.getElementById("RunMan");
+
+        RunManNumber =0;
+
+        $("#StartGame").click(function (){
+            $("#aside").css('display','block');
+
+            $("#BackGroundDiv").css('display','block');
+            $("#StartGame").css('display','none');
+            $("#StayMAn").css('display','none');
+            $("#RunMan").css('display','block');
+
+            // clearInterval(idelstop);
+             setInterval(RunAnimation,300);
+            function RunAnimation(){
+                RunManNumber = RunManNumber+1;
+
+                RunMans.src = "Asssets/Photo/Run__00"+StayamanNumber+".png"
+                if(RunManNumber == 9){
+                    RunManNumber = 0;
+                }
+            }
+        })
+
+
+//jump MAn
+           var JumpMan    = document.getElementById("JumpMan");
+                JumpManNumber=0;
+
+
+$("#JumpMan").click(function (e){
+
+    if (e.key == "Enter"){
+        setInterval(JumpAnimation,300);
+
+        function JumpAnimation(){
+            JumpManNumber = JumpManNumber+1;
+            JumpMan.src = "Asssets/Photo/Jump__00"+JumpManNumber+".png"
+            console.log(JumpManNumber);
+            if(JumpManNumber == 9){
+                JumpManNumber=0;
+                // $("#JumpMan").css('display','none');
+
+
+            }
+
+        }
+    }
+
+});
+
+
+</script>
+<script>
+
+</script>
+</html>
